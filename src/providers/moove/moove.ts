@@ -9,12 +9,14 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class MooveProvider {
-public base = "https://api.themoviedb.org/3";
+public base = "https://api.themoviedb.org/3/";
+public apiKey = "76783b6dbc60f58297b302f9bef9eb6d";
+
   constructor(public http: HttpClient) {
     console.log('Hello MooveProvider Provider');
   }
 
   getLatesMoove():any{
-    return this.http.get("https://viacep.com.br/ws/01001000/json/");
+    return this.http.get(this.base+"movie/popular?api_key="+this.apiKey);
   }
 }

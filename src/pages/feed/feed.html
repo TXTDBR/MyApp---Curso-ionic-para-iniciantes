@@ -11,27 +11,27 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <ion-card *ngFor="let filme of filmes">
 
     <ion-item>
       <ion-avatar item-start>
         <img src="/assets/imgs/marty-avatar.png">
       </ion-avatar>
-      <h2 class="title_nome">{{ nomeUsuario }}</h2>
-      <p class="data">November 5, 1955</p>
+      <h2 class="title_nome">{{ filme.original_title }}</h2>
+      <p class="data">{{ filme.release_date }}</p>
     </ion-item>
 
-    <img src="/assets/imgs/advance-card-bttf.png">
+    <img [src]="'https://image.tmdb.org/t/p/w300' + filme.backdrop_path ">
 
     <ion-card-content>
-      <p>Estou fazendo a página feed</p>
+      <p>{{ filme.overview }}</p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
         <button ion-button icon-start clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
+          <div>{{ filme.vote_count }}</div>
         </button>
       </ion-col>
       <ion-col>

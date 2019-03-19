@@ -18,7 +18,7 @@ import { MooveProvider } from '../../providers/moove/moove';
   ]
 })
 export class FeedPage {
-  private endereco:any = {};
+  public filmes:any = [];
   public nomeUsuario:string = "Charles França do Code";
 
   constructor(public navCtrl: NavController,
@@ -31,9 +31,8 @@ export class FeedPage {
   ionViewDidLoad() {
     this.mooveProvider.getLatesMoove().subscribe(
       data=>{
-
-        this.endereco = data
-        console.log(this.endereco.complemento);
+        const rs = (data as any);
+        this.filmes = rs.results;
       }, error=>{
         console.log(error);
       }
