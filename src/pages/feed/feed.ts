@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MooveProvider } from '../../providers/moove/moove';
+import { DetalheFilmePage } from '../detalhe-filme/detalhe-filme';
 
-/**
- * Generated class for the FeedPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -27,7 +22,9 @@ export class FeedPage {
      ) {
   }
 
-
+  test(id){
+    console.log(id);
+  }
   ionViewDidLoad() {
     this.mooveProvider.getLatesMoove().subscribe(
       data=>{
@@ -37,5 +34,12 @@ export class FeedPage {
         console.log(error);
       }
     )   
+  }
+
+  //metodo para passar parametros entre classes
+  pushPage(id){
+    this.navCtrl.push(DetalheFilmePage,{
+      id: `${id}`
+    });
   }
 }

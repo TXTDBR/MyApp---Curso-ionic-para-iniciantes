@@ -15,6 +15,8 @@ import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { MooveProvider } from '../providers/moove/moove';
 import { HttpClientModule } from '@angular/common/http';
+import { DetalheFilmePageModule } from '../pages/detalhe-filme/detalhe-filme.module';
+import { ConfigProvider } from '../providers/config/config';
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(MyApp),
     FeedPageModule,
     IntroPageModule,
+    DetalheFilmePageModule,
     HttpModule,
     HttpClientModule
   ],
@@ -48,7 +51,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MooveProvider
+    MooveProvider,
+    ConfigProvider
   ]
 })
 export class AppModule {}

@@ -19,4 +19,8 @@ public apiKey = "76783b6dbc60f58297b302f9bef9eb6d";
   getLatesMoove():any{
     return this.http.get(this.base+"movie/popular?api_key="+this.apiKey);
   }
+
+  getDetailMoove(id):any{
+    return this.http.get(this.base+"movie/"+id+"?api_key="+this.apiKey);
+  }
 }
