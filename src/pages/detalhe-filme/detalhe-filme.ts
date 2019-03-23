@@ -19,7 +19,7 @@ import { MooveProvider } from '../../providers/moove/moove';
 })
 export class DetalheFilmePage {
   public id;
-  public filmeDetail:any;
+  public filme:any;
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
@@ -27,12 +27,12 @@ export class DetalheFilmePage {
   this.id = navParams.get("id");
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     this.mooveProvider.getDetailMoove(this.id).subscribe(
       data=>{
         const rs = (data as any);
-        this.filmeDetail = rs;
-        console.log(this.filmeDetail);
+        this.filme = rs;
+        console.log(this.filme);
       }, error=>{
         console.log(error);
       }

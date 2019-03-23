@@ -6,10 +6,22 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>DetalheFilme</ion-title>
+    <ion-title>Detalhes do Filme</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content padding *ngIf="filme">
+ 
+    <h2>{{filme.original_title}}</h2>
+    <img [src]="'https://image.tmdb.org/t/p/w500/'+ filme.backdrop_path">
+    <h4>Gêneros</h4>
+    <span class="genres" *ngFor="let descricao of filme.genres">{{descricao.name}} </span>
+    <h4>Descrição</h4>
+    <p>{{filme.overview}}</p>
+    
+    <h4>Produtoras Parceiras</h4>
+    <div  *ngFor="let conp of filme.production_companies">
+      <h4 class="conp">{{conp.name}}</h4>
+      <img width="200px" [src]="'https://image.tmdb.org/t/p/w500/'+ conp.logo_path">
+    </div>
 </ion-content>
