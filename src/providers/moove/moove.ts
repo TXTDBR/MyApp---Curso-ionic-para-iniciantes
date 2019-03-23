@@ -16,8 +16,8 @@ public apiKey = "76783b6dbc60f58297b302f9bef9eb6d";
     console.log('Hello MooveProvider Provider');
   }
 
-  getLatesMoove():any{
-    return this.http.get(this.base+"movie/popular?api_key="+this.apiKey);
+  getLatesMoove(page = 2):any{
+    return this.http.get(this.base+"movie/popular?page="+page+"&api_key="+this.apiKey);
   }
 
   getDetailMoove(id):any{

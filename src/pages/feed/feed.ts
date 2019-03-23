@@ -18,6 +18,8 @@ export class FeedPage {
   public loader;
   public refresher;
   public isRefresher:boolean = false;
+  public page = 1;
+  public infiniteScroll;
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams, 
@@ -47,13 +49,31 @@ export class FeedPage {
   ionViewDidEnter() {
       this.carregarFilmes(); 
   }
-  public carregarFilmes(){
+
+  doInfinite(infiniteScroll) {
+    this.page++;
+    this.infiniteScroll = infiniteScroll;
+      this.carregarFilmes(true);
+   
+  }
+  
+  public carregarFilmes(newPage:boolean = false){
     this.oPenLoading();
-    this.mooveProvider.getLatesMoove().subscribe(
+    this.mooveProvider.getLatesMoove(this.page).subscribe(
       data=>{
         const rs = (data as any);
-        this.filmes = rs.results;
-        console.log(this.filmes);
+
+        if(newPage){
+          this.filmes = this.filmes.concat(rs.results);
+          console.log(this.filmes);
+           this.infiniteScroll.complete();
+        }else{
+          this.filmes = rs.results;
+        }
+        
+        
+
+
         this.closeLoading();
         if(this.isRefresher){
           this.refresher.complete();
